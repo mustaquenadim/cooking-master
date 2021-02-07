@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cooking Master</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- header -->
+        <header id="header">
+            <!-- navbar -->
+            <nav id="navbar">
+                <div class="brand">
+                    <a href="#">Cooking Master</a>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- end navbar -->
+        </header>
+        <!-- end header -->
+
+        <!-- main content -->
+        <main>
+            <!-- search section -->
+            <section id="search">
+                <div class="search-box">
+                    <form>
+                        <input
+                            id="meal-name"
+                            type="text"
+                            placeholder="Enter your desired food recipe"
+                            name="search"
+                        />
+                        <button
+                            id="search-btn"
+                            onclick="searchBtn()"
+                            type="submit"
+                        >
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </section>
+            <!-- end search section -->
+
+            <!-- food-items section -->
+            <section id="food-item">
+                <div id="meal-items">
+
+                </div>
+                <!-- alert -->
+                <div id="alert">
+                    <p>Please enter valid food!</p>
+                </div>
+                <!-- end alert -->
+            </section>
+            <!-- end food-items section -->
+        </main>
+        <!-- end main content -->
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p>Copyright &copy; 2021 All rights reserved | Cooking Master</p>
+        </footer>
+        <!-- Footer -->
+
+        <!-- javascript -->
+        <script src="script.js"></script>
+        <!-- end javascript -->
+    </body>
+</html>
