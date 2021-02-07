@@ -3,8 +3,8 @@ const apiKey = '1';
 var apiBase = 'https://www.themealdb.com/api/json/v1/1/search.php';
 
 const getMeals = (meals) => {
-    // fetch(`${apiBase}?f=${meals}`)
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meals}`)
+    fetch(`${apiBase}?f=${meals}`)
+    fetch(`${apiBase}?s=${meals}`)
         .then(response => response.json())
         .then(data => {
             console.log('hello');
@@ -68,7 +68,7 @@ const ingredients = (id) => {
 
 // 
 let ingredientsDisplay = (data) => {
-	document.getElementById("meal-list").style.display = "none";
+	// document.getElementById("meal-list").style.display = "none";
 	let fullDescription = `
     <div class="card">
         <div>

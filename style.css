@@ -37,15 +37,18 @@ li{
 /* end header */
 
 /* main content */
+main{
+    margin: 0 10%;
+}
 /* search section */
 #search{
     height: 100px;
 }
 .search-box{
-    margin: 50px 505px;
+    margin: 50px 450px;
 }
 input {
-    width: 400px;
+    width: 180px;
     height: 40px;
     background-color: white;
     border: none;
@@ -78,9 +81,10 @@ input {
     background-color: white;
     text-align: center;
     padding-bottom: 20px;
-    margin: 10px auto;
+    margin: 10px 10px;
     border-radius: 20px;
-    width: 25%;
+    width: 20%;
+    float: left;
 }
 .card {
     width: 600px;
