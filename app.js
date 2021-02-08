@@ -1,19 +1,17 @@
-const searchBtn = document.getElementById('search-btn');
 const alert = document.getElementById('alert');
 
-// search
-searchBtn.addEventListener('click', () => {
+// search for meal
+let searchFoodRecipe = () => {
     const inputMeal = document.getElementById('meal-name').value;
     if (inputMeal != '')
     {
-        alert.style.display = 'none';
         getMeals(inputMeal);
     } 
     else
     {
         alert.style.display = 'block';
     }
-});
+};
 
 const apiKey = '1';
 var apiBase = 'https://www.themealdb.com/api/json/v1/1/search.php';
@@ -27,6 +25,8 @@ const getMeals = (meals) => {
         });
 };
 
+const foodItems = document.getElementById('food-items');
+
 // food items after search
 const mealList = meal => {
     if (meal != null)
@@ -39,7 +39,7 @@ const mealList = meal => {
             <h3>${item.strMeal}</h3>
             </div>
             `;
-            document.getElementById('food-items').innerHTML += mealItem;
+            foodItems.innerHTML += mealItem;
         });
     }
     else
@@ -50,57 +50,31 @@ const mealList = meal => {
 
 // calling ingredients
 const ingredients = (id) => {
-	const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-	fetch(url)
+	fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
 		.then(response => response.json())
 		.then(data => {
 			recipeDisplay(data.meals[0]);
-            // renderFoodInfo(data.meals[0]);
 		});
 };
 
 // showing recipe
-// let recipeDisplay = (recipe) => {
-// 	document.getElementById('food-items').style.display = 'none';
-//     document.getElementById('alert').style.display = 'none';
-// 	let ingredients = `
-//         <div>
-//             <img src="${recipe.strMealThumb}">
-//         </div>
-//         <div class="content">
-//             <h2>${recipe.strMeal}</h2>
-//             <h6>Ingredients</h6>
-//             <h5>+ ${recipe.strMeasure1}, ${recipe.strIngredient1}</h5>
-//             <h5>+ ${recipe.strMeasure2}, ${recipe.strIngredient2}</h5>
-//             <h5>+ ${recipe.strMeasure3}, ${recipe.strIngredient3}</h5>
-//             <h5>+ ${recipe.strMeasure4}, ${recipe.strIngredient4}</h5>
-//             <h5>+ ${recipe.strMeasure5}, ${recipe.strIngredient5}</h5>
-//         </div>
-//     `;
-
-// 	let recipeDiv = document.createElement("div");
-// 	recipeDiv.className = "ingredients";
-// 	recipeDiv.innerHTML = ingredients;
-// 	document.getElementById('recipe').appendChild(recipeDiv);
-// };
-
 const recipeDisplay = (recipe) => {
-    document.getElementById('food-items').style.display = 'none';
-    document.getElementById('alert').style.display = 'none';
+    document.getElementById('search').style.display = 'none';
+    foodItems.style.display = 'none';
+    alert.style.display = 'none';
     const ingredients = [];
     for (let i = 1; i <= 20; i++) 
     {
         if (recipe[`strIngredient${i}`] && recipe[`strMeasure${i}`])
         {
-            ingredients[i] = `${recipe[`strIngredient${i}`]}, ${recipe[`strMeasure${i}`]}`;
+            ingredients[i] = `${recipe[`strMeasure${i}`]}, ${recipe[`strIngredient${i}`]}`;
         }
         else 
         {
             break;
         }
     }
-    const recipeDiv = document.getElementById('recipe');
-    recipeDiv.innerHTML = `
+    const recipeDiv = `
         <div class="ingredients">
             <div>
                 <img src="${recipe.strMealThumb}">
@@ -114,4 +88,5 @@ const recipeDisplay = (recipe) => {
             </div>
         </div>
     `;
+    document.getElementById('recipe').innerHTML = recipeDiv;
 };
