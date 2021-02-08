@@ -81,7 +81,7 @@ const recipeDisplay = (recipe) => {
             </div>
             <div class="content">
                 <h2>${recipe.strMeal}</h2>
-                <h6>Ingredients</h6>
+                <h3>Ingredients</h3>
                 <ul>
                     ${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join('')}
                 </ul>
