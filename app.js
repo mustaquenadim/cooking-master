@@ -6,12 +6,12 @@ searchBtn.addEventListener('click', () => {
     const inputMeal = document.getElementById('meal-name').value;
     if (inputMeal != '')
     {
-        alert.style.display = 'block';
+        alert.style.display = 'none';
         getMeals(inputMeal);
     } 
     else
     {
-        alert.style.display = 'none';
+        alert.style.display = 'block';
     }
 });
 
@@ -34,16 +34,12 @@ const mealList = meal => {
         alert.style.display = 'none'
         meal.forEach(item => {
             let mealItem = `
-            <div onclick="ingredients('${item.idMeal}')">
+            <div class="meal-item" onclick="ingredients('${item.idMeal}')">
             <img src="${item.strMealThumb}">
             <h3>${item.strMeal}</h3>
             </div>
             `;
-            let createDiv = document.createElement('div');
-            createDiv.className = 'meal-item';
-            createDiv.innerHTML = mealItem;
-            document.getElementById('food-items').appendChild(createDiv);
-            // document.getElementById('food-items').appendChild(mealItem);
+            document.getElementById('food-items').innerHTML += mealItem;
         });
     }
     else
@@ -58,60 +54,64 @@ const ingredients = (id) => {
 	fetch(url)
 		.then(response => response.json())
 		.then(data => {
-            console.log(data.meals[0]);
 			recipeDisplay(data.meals[0]);
+            // renderFoodInfo(data.meals[0]);
 		});
 };
 
 // showing recipe
-let recipeDisplay = (recipe) => {
-    console.log('babu tomar ki hoise');
-	document.getElementById('food-items').style.display = 'none';
+// let recipeDisplay = (recipe) => {
+// 	document.getElementById('food-items').style.display = 'none';
+//     document.getElementById('alert').style.display = 'none';
+// 	let ingredients = `
+//         <div>
+//             <img src="${recipe.strMealThumb}">
+//         </div>
+//         <div class="content">
+//             <h2>${recipe.strMeal}</h2>
+//             <h6>Ingredients</h6>
+//             <h5>+ ${recipe.strMeasure1}, ${recipe.strIngredient1}</h5>
+//             <h5>+ ${recipe.strMeasure2}, ${recipe.strIngredient2}</h5>
+//             <h5>+ ${recipe.strMeasure3}, ${recipe.strIngredient3}</h5>
+//             <h5>+ ${recipe.strMeasure4}, ${recipe.strIngredient4}</h5>
+//             <h5>+ ${recipe.strMeasure5}, ${recipe.strIngredient5}</h5>
+//         </div>
+//     `;
+
+// 	let recipeDiv = document.createElement("div");
+// 	recipeDiv.className = "ingredients";
+// 	recipeDiv.innerHTML = ingredients;
+// 	document.getElementById('recipe').appendChild(recipeDiv);
+// };
+
+const recipeDisplay = (recipe) => {
+    document.getElementById('food-items').style.display = 'none';
     document.getElementById('alert').style.display = 'none';
-	let ingredients = `
-        <div>
-            <img src="${recipe.strMealThumb}">
-        </div>
-        <div class="content">
-            <h2>${recipe.strMeal}</h2>
-            <h6>Ingredients</h6>
-            <h5>+ ${recipe.strMeasure1}, ${recipe.strIngredient1}</h5>
-            <h5>+ ${recipe.strMeasure2}, ${recipe.strIngredient2}</h5>
-            <h5>+ ${recipe.strMeasure3}, ${recipe.strIngredient3}</h5>
-            <h5>+ ${recipe.strMeasure4}, ${recipe.strIngredient4}</h5>
-            <h5>+ ${recipe.strMeasure5}, ${recipe.strIngredient5}</h5>
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) 
+    {
+        if (recipe[`strIngredient${i}`] && recipe[`strMeasure${i}`])
+        {
+            ingredients[i] = `${recipe[`strIngredient${i}`]}, ${recipe[`strMeasure${i}`]}`;
+        }
+        else 
+        {
+            break;
+        }
+    }
+    const recipeDiv = document.getElementById('recipe');
+    recipeDiv.innerHTML = `
+        <div class="ingredients">
+            <div>
+                <img src="${recipe.strMealThumb}">
+            </div>
+            <div class="content">
+                <h2>${recipe.strMeal}</h2>
+                <h6>Ingredients</h6>
+                <ul>
+                    ${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join('')}
+                </ul>
+            </div>
         </div>
     `;
-
-	let recipeDiv = document.createElement("div");
-	recipeDiv.className = "ingredients";
-	recipeDiv.innerHTML = ingredients;
-	document.getElementById('recipe').appendChild(recipeDiv);
 };
-
-// const renderFoodInfo = (recipe) => {
-//     // Get all ingredients from the object. Up to 20
-//     const ingredients = [];
-//     for (let i = 1; i <= 20; i++) 
-//     {
-//         if (recipe[`strIngredient${i}`]) 
-//         {
-//             ingredients.push(`${recipe.strIngredient`${i}`}` - `${recipe.strMeasure`${i}`}`);
-//         }
-//         else 
-//         {
-//             // Stop if there are no more ingredients
-//             break;
-//         }
-//     }
-//     const recipeDiv = document.getElementById('foodsDetails');
-//     recipeDiv.innerHTML = `
-//     <img class="img-fluid rounded mb-4" src="${food.strMealThumb}" alt="">
-//     <h4>${food.strMeal}</h4>
-    
-//     <h5 class="pt-3 pb-2">Ingredients</h5>
-//     <ul class="list-unstyled mb-0">
-//     ${ingredients.map((ingredient) => <li>${ingredient}</li>).join('')}
-//     </ul>
-// `;
-// };
