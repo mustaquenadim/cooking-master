@@ -1,13 +1,34 @@
-// calling API
+const searchBtn = document.getElementById('search-btn');
+const alert = document.getElementById('alert');
+const mealItems = document.getElementById('meal-items');
+
+// search
+searchBtn.addEventListener('click', () => {
+    const inputMeal = document.getElementById('meal-name').value;
+    mealItems.innerHTML = '';
+    if (inputMeal != '')
+    {
+        // console.log('search if')
+        alert.style.display = 'block';
+        getMeals(inputMeal);
+    } 
+    else
+    {
+        // console.log('search else');
+        alert.style.display = 'none';
+    }
+});
+
 const apiKey = '1';
 var apiBase = 'https://www.themealdb.com/api/json/v1/1/search.php';
 
+// calling API
 const getMeals = (meals) => {
     fetch(`${apiBase}?f=${meals}`)
     fetch(`${apiBase}?s=${meals}`)
         .then(response => response.json())
         .then(data => {
-            console.log('hello');
+            // console.log('api calling');
             mealList(data.meals);
         });
 };
@@ -16,7 +37,8 @@ const getMeals = (meals) => {
 const mealList = meal => {
     if (meal != null)
     {
-        console.log('if')
+        // console.log('food item if');
+        alert.style.display = 'none'
         meal.forEach(item => {
             let mealItem = `
             <div onclick="ingredients('${item.idMeal}')">
@@ -32,35 +54,17 @@ const mealList = meal => {
     }
     else
     {
+        // console.log('food item else');
         alert.style.display = 'block';
     }
 };
 
-// search
-const searchBtn = document.getElementById('search-btn');
-const alert = document.getElementById('alert');
-const mealItems = document.getElementById('meal-items');
-
-searchBtn.addEventListener('click', () => {
-    const inputMeal = document.getElementById('meal-name').value;
-    mealItems.innerHTML = '';
-    if (inputMeal === '')
-    {
-        alert.style.display = 'block';
-    } 
-    else
-    {
-        alert.style.display = 'none';
-        getMeals(inputMeal);
-    }
-});
-
+// calling ingredients
 const ingredients = (id) => {
 	const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
 	fetch(url)
 		.then(response => response.json())
 		.then(data => {
-            // console.log('ami kintu vitore');
             console.log(data.meals[0]);
 			ingredientsDisplay(data.meals[0]);
 		});
@@ -68,9 +72,10 @@ const ingredients = (id) => {
 
 // 
 let ingredientsDisplay = (data) => {
-	// document.getElementById("meal-list").style.display = "none";
+    console.log('babu tomar ki hoise');
+	document.getElementById('meal-list').style.display = 'none';
 	let fullDescription = `
-    <div class="card">
+    <div class="ingredients">
         <div>
             <img src="${data.strMealThumb}">
         </div>
@@ -95,5 +100,5 @@ let ingredientsDisplay = (data) => {
 	createDiv.id = "Description";
 	createDiv.innerHTML = fullDescription;
 
-	document.body.appendChild(createDiv);
+	document.getElementById('meal-items').appendChild(createDiv);
 };

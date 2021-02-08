@@ -1,20 +1,28 @@
-/* tags default styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
+    height: auto;
     background-color: #edd263;
+    /* border: 1px solid; */
 }
 img {
     width: 100%;
     border-radius: 20px;
 }
-/* end tags default styles */
 
 /* header */
 header{
-    height: 70px;
+    border: 1px solid;
 }
 /* navbar */
 #navbar{
-    margin: 0px 120px;
+    margin: auto 120px;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid; */
 }
 #navbar a{
     text-decoration: none;
@@ -22,38 +30,49 @@ header{
     font-size: 1.2em;
     font-weight: 700px;
 }
-.brand a{
-    padding: 25px 25px;
-    float: left;
+.brand{
+    padding: 10px 25px;
+    /* border: 1px solid; */
 }
 ul{
     list-style-type: none;
-    margin-left: 800px;
+    display: flex;
+    height: 50px;
+    margin: auto 20px;
+    padding: 5px;
+    /* border: 1px solid; */
 }
 li{
-    float: left;
-    padding: 25px 25px;
+    padding: 5px 25px;
+    /* border: 1px solid; */
 }
 /* end header */
 
 /* main content */
 main{
-    margin: 0 10%;
+    margin: auto 8%;
+    border: 1px solid;
 }
 /* search section */
 #search{
     height: 100px;
+    border: 1px solid;
 }
 .search-box{
-    margin: 50px 450px;
+    padding: 25px 25px;
+    /* border: 1px solid; */
+}
+form{
+    display: flex;
+    justify-content: center;
 }
 input {
-    width: 180px;
+    width: 50%;
     height: 40px;
     background-color: white;
     border: none;
     border-radius: 5px;
-    margin: 0;
+    /* border: 1px solid; */
 }
 #search button {
     height: 40px;
@@ -66,6 +85,7 @@ input {
     cursor: pointer;
     background-color: orange;
     margin: 0;
+    /* border: 1px solid; */
 }
 #search button:hover {
     background: red;
@@ -76,6 +96,7 @@ input {
 #meal-list {
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid;
 }
 .image-with-title {
     background-color: white;
@@ -85,15 +106,18 @@ input {
     border-radius: 20px;
     width: 20%;
     float: left;
+    border: 1px solid;
 }
-.card {
+.ingredients {
     width: 600px;
     border-radius: 20px;
     margin: 0px 300px;
 }
 /* alert */
 #alert {
-    margin: 50px 650px;
+    display: none;
+    text-align: center;
+    padding: 25px 25px;
     color: red;
     font-size: 1.2em;
     font-weight: 600;
@@ -103,7 +127,9 @@ input {
 
 /* footer */
 #footer {
-    margin: 50px 570px;
+    text-align: center;
+    padding: 15px;
     font-weight: 600;
+    border: 1px solid;
 }
 /* end footer */
