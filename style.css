@@ -10,7 +10,6 @@ body {
 }
 img {
     width: 100%;
-    border-radius: 20px;
 }
 
 /* header */
@@ -93,26 +92,49 @@ input {
 /* end search section */
 
 /* food-items section */
-#meal-list {
+#food-items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px;
     border: 1px solid;
 }
-.image-with-title {
+.meal-item {
     background-color: white;
     text-align: center;
-    padding-bottom: 20px;
-    margin: 10px 10px;
-    border-radius: 20px;
-    width: 20%;
-    float: left;
+    margin: 10px;
+    border-radius: 10px;
+    width: 23%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid;
+}
+.meal-item h3{
+    padding: 10px;
+}
+/* end food-items section */
+
+/* recipe section */
+#recipe{
+    padding: 25px;
     border: 1px solid;
 }
 .ingredients {
-    width: 600px;
-    border-radius: 20px;
-    margin: 0px 300px;
+    width: 50%;
+    background-color: azure;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border: 1px solid;
 }
+.content{
+    padding: 20px;
+    border: 1px solid;
+}
+/* end recipe section */
+
 /* alert */
 #alert {
     display: none;
