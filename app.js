@@ -31,12 +31,13 @@ const foodItems = document.getElementById('food-items');
 const mealList = meal => {
     if (meal != null)
     {
-        alert.style.display = 'none'
+        alert.style.display = 'none';
+        foodItems.innerHTML = "";
         meal.forEach(item => {
             let mealItem = `
             <div class="meal-item" onclick="ingredients('${item.idMeal}')">
             <img src="${item.strMealThumb}">
-            <h3>${item.strMeal}</h3>
+            <h2>${item.strMeal}</h2>
             </div>
             `;
             foodItems.innerHTML += mealItem;
@@ -80,7 +81,7 @@ const recipeDisplay = (recipe) => {
                 <img src="${recipe.strMealThumb}">
             </div>
             <div class="content">
-                <h2>${recipe.strMeal}</h2>
+                <h1>${recipe.strMeal}</h1>
                 <h3>Ingredients</h3>
                 <ul>
                     ${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join('')}
