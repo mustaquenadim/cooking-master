@@ -31,7 +31,7 @@ const foodItems = document.getElementById('food-items');
 const mealList = meal => {
     if (meal != null)
     {
-        alert.style.display = 'none';
+        // alert.style.display = 'none';
         foodItems.innerHTML = "";
         meal.forEach(item => {
             let mealItem = `
@@ -84,7 +84,7 @@ const recipeDisplay = (recipe) => {
                 <h1>${recipe.strMeal}</h1>
                 <h3>Ingredients</h3>
                 <ul>
-                    ${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join('')}
+                    ${ingredients.map((ingredient) => `<li><i class="fas fa-check-square icon"></i>${ingredient}</li>`).join('')}
                 </ul>
             </div>
         </div>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +7,7 @@
 body {
     height: auto;
     background-color: #edd263;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 img {
     width: 100%;
@@ -22,15 +23,17 @@ img {
 }
 #navbar a{
     text-decoration: none;
-    color: black;
+    color: #252525;
     font-size: 1.2em;
     font-weight: 700px;
 }
 .brand{
+    font-size: 20px;
+    font-weight: 700;
     padding: 10px 25px;
 }
 .brand a{
-    font-size: 32px;
+    color: #3B2D64 !important;
 }
 #navbar ul{
     list-style-type: none;
@@ -39,7 +42,7 @@ img {
     margin: auto 20px;
     padding: 5px;
 }
-li{
+#navbar li{
     padding: 5px 25px;
 }
 /* end header */
@@ -62,10 +65,11 @@ form{
 input {
     width: 50%;
     height: 40px;
+    font-size: 20px;
     background-color: white;
     border: none;
     border-radius: 5px;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 #search button {
     height: 40px;
@@ -76,12 +80,15 @@ input {
     font-size: 17px;
     border: none;
     cursor: pointer;
-    background-color: orange;
+    color: white;
+    background-color: #3B2D64;
     margin: 0;
 }
 #search button:hover {
     transition: 0.5s;
-    background: red;
+    font-size: 20px;
+    background: #ff0000;
+    box-shadow: 2px 2px 8px #ff0000;
 }
 /* end search section */
 
@@ -93,13 +100,16 @@ input {
     padding: 5px;
 }
 .meal-item {
-    background-color: white;
+    background-color: #F8F7F5;
     text-align: center;
     margin: 10px;
     border-radius: 10px;
     width: 23%;
     overflow: hidden;
     cursor: pointer;
+}
+.meal-item:hover {
+    box-shadow: 1px 1px 15px black;
 }
 #food-items h2{
     padding: 10px;
@@ -112,7 +122,7 @@ input {
 }
 .ingredients {
     width: 50%;
-    background-color: azure;
+    background-color: #F8F7F5;
     border-radius: 10px;
     display: block;
     margin-left: auto;
@@ -127,11 +137,19 @@ input {
     padding-bottom: 25px;
 }
 #recipe h3{
-    font-weight: 550;
+    font-size: 20px;
+    font-weight: 600;
 }
 #recipe ul{
-    padding: 20px;
-    list-style-type: square;
+    padding: 20px 0px;
+    list-style-type: none;
+}
+#recipe li{
+    padding: 5px 0px;
+}
+.icon{
+    color: #3B2D64;
+    padding-right: 10px;
 }
 /* end recipe section */
 
